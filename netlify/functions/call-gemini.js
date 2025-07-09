@@ -1,5 +1,5 @@
-// This is an improved version of the function with better error handling.
-// It runs on Netlify's servers, not in the user's browser.
+// Final version using node-fetch for maximum compatibility.
+const fetch = require('node-fetch');
 
 exports.handler = async function(event) {
   // 1. Check if the request method is POST
@@ -12,7 +12,6 @@ exports.handler = async function(event) {
     const apiKey = process.env.GEMINI_API_KEY;
     
     // 3. CRITICAL CHECK: Fail clearly if the API key is not found.
-    // This is the most common point of failure.
     if (!apiKey) {
       console.error("FATAL: GEMINI_API_KEY environment variable not set.");
       return {
@@ -49,7 +48,7 @@ exports.handler = async function(event) {
 
     const responseData = await response.json();
 
-    // 6. Handle errors from the Gemini API itself (e.g., invalid key)
+    // 6. Handle errors from the Gemini API itself
     if (!response.ok) {
       console.error("Error from Gemini API:", responseData);
       return {
