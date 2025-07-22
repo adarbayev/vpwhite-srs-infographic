@@ -694,9 +694,9 @@
             const frameworksString = selectedFrameworks.length > 0 ? selectedFrameworks.join(', ') : 'No formal frameworks currently used';
 
             const prompt = `
-            Acting as an expert ESG and UK SRS implementation consultant for a firm named VP White, please analyze the following company profile and provide a strategic readiness assessment.
+            Acting as an expert ESG and UK SRS implementation consultant, please analyze our organization's profile and provide a strategic readiness assessment.
 
-            **Company Profile:**
+            **Our Profile:**
             * **Industry:** ${industry}
             * **Company Size:** ${headcount} employees
             * **Turnover:** ${turnover}
@@ -705,13 +705,13 @@
             * **Current Reporting Experience:** ${frameworksString}
 
             **Your Task:**
-            Based on this detailed profile, generate a concise report in markdown format that includes two sections:
+            Based on our detailed profile, generate a concise report in markdown format that includes two sections:
 
-            1.  **Benchmarking Statement:** A brief analysis of how this company is likely positioned against its peers in the ${industry} sector regarding UK SRS readiness. Critically, factor in their stated governance and data maturity as the primary indicators of their preparedness.
+            1.  **Benchmarking Statement:** A brief analysis of how our organization is likely positioned against its peers in the ${industry} sector regarding UK SRS readiness. Critically, factor in our stated governance and data maturity as the primary indicators of our preparedness.
 
-            2.  **High-Level Roadmap:** A short, simple, and actionable roadmap with 3-4 key steps to close the gaps between their current state and being fully compliant with UK SRS. The roadmap should be highly tailored to their governance and data maturity. For example, if governance is weak, the first step MUST be about establishing ownership. If data is manual, a key step MUST be about improving data controls.
+            2.  **High-Level Roadmap:** A short, simple, and actionable roadmap with 3-4 key steps to close the gaps between our current state and being fully compliant with UK SRS. The roadmap should be highly tailored to our governance and data maturity. For example, if our governance is weak, the first step MUST be about establishing ownership. If our data is managed manually, a key step MUST be about improving data controls.
 
-            The tone should be authoritative, clear, and encouraging. Start the report with a title like "### UK SRS Readiness Assessment".
+            The tone should be authoritative, clear, and encouraging. Start the report with a title like "### Your UK SRS Readiness Assessment".
             `;
 
             callGemini(prompt);
@@ -720,4 +720,4 @@
     </script>
 
 </body>
-</html>
+</ht
