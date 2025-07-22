@@ -92,82 +92,53 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Interactive Matrix Styles */
+        /* Enhanced Interactive Matrix Styles */
+        .interactive-matrix th, .interactive-matrix td {
+            padding: 0.75rem 1rem;
+            border: 1px solid #f1f3f5;
+            text-align: center;
+            position: relative;
+            vertical-align: middle;
+        }
         .interactive-matrix th {
-            padding: 1rem;
             background-color: #f8f9fa;
             border-bottom: 2px solid #dee2e6;
             color: #1D2A39;
             font-weight: 600;
-        }
-        .interactive-matrix td {
-            padding: 1rem;
-            border: 1px solid #f1f3f5;
-            text-align: center;
-            position: relative;
         }
         .interactive-matrix .pillar-name {
             text-align: left;
             font-weight: 600;
             color: #1D2A39;
             background-color: #f8f9fa;
+            width: 25%;
         }
         .matrix-cell { cursor: help; }
         .matrix-cell .tooltip {
-            visibility: hidden;
-            width: 220px;
-            background-color: #1D2A39;
-            color: #fff;
-            text-align: left;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 10;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.875rem;
-            line-height: 1.4;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            visibility: hidden; width: 240px; background-color: #1D2A39; color: #fff; text-align: left;
+            border-radius: 6px; padding: 10px; position: absolute; z-index: 10; bottom: 115%; left: 50%;
+            margin-left: -120px; opacity: 0; transition: opacity 0.3s; font-size: 0.875rem; line-height: 1.4;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); pointer-events: none;
         }
-        .matrix-cell:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-        .status-mandatory { background-color: #008080; color: white; }
-        .status-recommended { background-color: #B58900; color: white; }
-        .status-partial { background-color: #86B0B0; color: #1D2A39; }
-        .status-minimal { background-color: #E9ECEF; color: #495057; }
-        .status-na { background-color: #ffffff; }
+        .matrix-cell:hover .tooltip, .matrix-cell:focus .tooltip { visibility: visible; opacity: 1; }
+        .maturity-bar { display: flex; gap: 2px; margin-top: 4px; }
+        .maturity-block { height: 6px; background-color: #e9ecef; border-radius: 1px; }
+        .maturity-block.filled { background-color: #008080; }
+        .timing-icon { font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 0.25rem; margin-top: 4px; color: #495057; }
         
-        /* Custom Checkbox Styles */
-        .custom-checkbox:checked {
-            background-color: #008080;
-            border-color: #008080;
-        }
-        .custom-checkbox:focus {
-            --tw-ring-color: rgba(0, 128, 128, 0.5);
-        }
-        .form-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        .form-select, .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ced4da;
-            border-radius: 0.375rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        .form-select:focus, .form-input:focus {
-            border-color: #008080;
-            outline: 0;
-            box-shadow: 0 0 0 0.25rem rgba(0, 128, 128, 0.25);
-        }
+        /* Teal Gradient Palette */
+        .status-level-4 { background-color: #008080; color: white; } /* Mandatory */
+        .status-level-3 { background-color: #209999; color: white; } /* Recommended */
+        .status-level-2 { background-color: #86B0B0; color: #1D2A39; } /* Implied / In Transition */
+        .status-level-1 { background-color: #D4E9E9; color: #1D2A39; } /* Minimal / Optional */
+        .status-level-0 { background-color: #ffffff; } /* N/A */
+        .transitional-relief { border: 2px dashed #B58900; }
+
+        .custom-checkbox:checked { background-color: #008080; border-color: #008080; }
+        .custom-checkbox:focus { --tw-ring-color: rgba(0, 128, 128, 0.5); }
+        .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .form-select, .form-input { width: 100%; padding: 0.75rem; border: 1px solid #ced4da; border-radius: 0.375rem; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+        .form-select:focus, .form-input:focus { border-color: #008080; outline: 0; box-shadow: 0 0 0 0.25rem rgba(0, 128, 128, 0.25); }
     </style>
 </head>
 <body class="text-gray-800">
@@ -319,71 +290,127 @@
             </section>
             
             <section id="reporting-evolution" class="card">
-                 <p class="kicker text-center">The Journey to Now</p>
-                 <h2 class="text-center">The Evolution of UK Climate Reporting</h2>
-                 <p class="max-w-3xl mx-auto text-center mb-12 text-gray-600">UK SRS is the culmination of evolving frameworks. This progression shows a clear trend towards more granular, integrated, and investor-focused disclosure. Hover over any cell for details.</p>
+                 <p class="kicker text-center">Decision Tool</p>
+                 <h2 class="text-center">Journey to Investor-Grade Disclosure</h2>
+                 <div class="text-center max-w-4xl mx-auto">
+                    <p class="mb-4 text-gray-600">Investors now expect sustainability disclosures to be as reliable and decision-useful as financial statements. The UK is embedding the ISSB global baseline (UK SRS) to meet this demand, moving reporting from voluntary narratives towards mandatory, assurable data.</p>
+                    <p class="mb-12 text-gray-600">This matrix shows how existing frameworks ladder up to the investor-grade end-state required by UK SRS, highlighting where preparers must enhance their processes. Use the filters to create a custom view.</p>
+                 </div>
+
+                 <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+                    <div id="matrix-filters" class="flex flex-wrap gap-x-4 gap-y-2">
+                        <label class="flex items-center"><input type="checkbox" class="custom-checkbox h-4 w-4 rounded mr-2" value="1" checked> SECR</label>
+                        <label class="flex items-center"><input type="checkbox" class="custom-checkbox h-4 w-4 rounded mr-2" value="2" checked> TCFD</label>
+                        <label class="flex items-center"><input type="checkbox" class="custom-checkbox h-4 w-4 rounded mr-2" value="3" checked> IFRS S2</label>
+                        <label class="flex items-center"><input type="checkbox" class="custom-checkbox h-4 w-4 rounded mr-2" value="4" checked> UK SRS</label>
+                    </div>
+                    <button id="download-csv-btn" class="bg-gray-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors text-sm flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        Download CSV
+                    </button>
+                 </div>
+
                  <div class="w-full overflow-x-auto rounded-lg border border-gray-200">
-                    <table class="interactive-matrix w-full min-w-[700px]">
+                    <table id="comparison-matrix" class="interactive-matrix w-full min-w-[800px]">
                         <thead>
                             <tr>
-                                <th class="pillar-name">Reporting Pillar</th>
-                                <th>SECR (2019)</th>
-                                <th>TCFD (Framework)</th>
-                                <th>IFRS S2 (Global)</th>
-                                <th>UK SRS (2026+)</th>
+                                <th class="pillar-name">Pillar & System Maturity</th>
+                                <th data-col="1">SECR (2019)</th>
+                                <th data-col="2">TCFD (Framework)</th>
+                                <th data-col="3">IFRS S2 (Global)</th>
+                                <th data-col="4">UK SRS (2026+)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="pillar-name">Governance</td>
-                                <td class="matrix-cell status-minimal">Minimal<div class="tooltip">Implied requirement, but no specific disclosures mandated.</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Recommends describing the board's oversight and management's role.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Requires detailed disclosure of governance bodies, mandates, and oversight processes.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Adopts the IFRS S2 requirements for detailed governance disclosures.</div></td>
+                                <td class="pillar-name">
+                                    Governance
+                                    <div class="maturity-bar" title="System Maturity: 2/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block"></div><div class="maturity-block"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-2" aria-label="SECR Governance: Implied."><span class="font-semibold">Implied</span><div class="tooltip">Required via Directors' Report duties (Companies Act 2006 s172) but not explicitly detailed in SECR itself.</div></td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Governance: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommends describing the board's oversight and management's role in assessing and managing climate-related risks.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-4" aria-label="IFRS S2 Governance: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Requires detailed disclosure of governance bodies, mandates, and oversight processes for climate risks and opportunities.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-4" aria-label="UK SRS Governance: Mandatory."><span class="font-semibold">Mandatory</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Adopts IFRS S2 requirements. Assurance expected to be limited initially, moving towards reasonable.</div></td>
                             </tr>
                             <tr>
-                                <td class="pillar-name">Strategy</td>
-                                <td class="matrix-cell status-minimal">Minimal<div class="tooltip">Requires a narrative on energy efficiency measures taken.</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Recommends disclosing risks, opportunities, and the results of scenario analysis.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Requires quantified financial impacts and details of any transition plans.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Adopts IFRS S2, requiring quantified impacts and transition plan details.</div></td>
+                                <td class="pillar-name">
+                                    Strategy
+                                    <div class="maturity-bar" title="System Maturity: 3/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-1" aria-label="SECR Strategy: Minimal."><span class="font-semibold">Minimal</span><div class="tooltip">Requires a narrative on energy efficiency measures taken during the year.</div></td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Strategy: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommends disclosing risks, opportunities, and the results of forward-looking scenario analysis.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-4" aria-label="IFRS S2 Strategy: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Requires disclosure of current and anticipated financial impacts and details of any transition plans.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-4" aria-label="UK SRS Strategy: Mandatory."><span class="font-semibold">Mandatory</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Adopts IFRS S2, requiring quantified impacts and transition plan details.</div></td>
                             </tr>
                             <tr>
-                                <td class="pillar-name">Risk Management</td>
-                                <td class="matrix-cell status-na">N/A<div class="tooltip">Not explicitly covered under SECR.</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Recommends describing processes for identifying, assessing, and managing climate risks.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Requires detailed disclosure of risk management integration into overall ERM.</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Adopts the IFRS S2 requirements for integrated risk management disclosure.</div></td>
+                                <td class="pillar-name">
+                                    Risk Management
+                                    <div class="maturity-bar" title="System Maturity: 3/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-2" aria-label="SECR Risk Management: Implied."><span class="font-semibold">Implied</span><div class="tooltip">Principal risks (which may include climate) are required in the Strategic Report for certain companies, but not specified by SECR.</div></td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Risk Management: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommends describing processes for identifying, assessing, and managing climate risks.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-4" aria-label="IFRS S2 Risk Management: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Requires detailed disclosure of risk management integration into the overall Enterprise Risk Management (ERM) framework.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-4" aria-label="UK SRS Risk Management: Mandatory."><span class="font-semibold">Mandatory</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Adopts IFRS S2 requirements for integrated risk management disclosure.</div></td>
                             </tr>
                             <tr>
-                                <td class="pillar-name">Scope 1 & 2 GHG</td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Required for quoted companies, large unquoted companies, and LLPs (UK operations only).</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Recommends disclosure of Scope 1 and 2 emissions (global basis).</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Requires disclosure of absolute gross Scope 1 & 2 emissions (global basis).</div></td>
-                                <td class="matrix-cell status-mandatory">Mandatory<div class="tooltip">Adopts the IFRS S2 requirements for global Scope 1 & 2 emissions.</div></td>
+                                <td class="pillar-name">
+                                    Financial Metrics & Targets
+                                    <div class="maturity-bar" title="System Maturity: 4/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-0" aria-label="SECR Financial Metrics: Not Applicable.">N/A</td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Financial Metrics: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommends disclosing metrics used to assess risks and opportunities, which can include capex, R&D, and revenue alignment.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-4" aria-label="IFRS S2 Financial Metrics: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Requires disclosure of the amount of capex, opex, and financing deployed towards climate-related risks and opportunities.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-4" aria-label="UK SRS Financial Metrics: Mandatory."><span class="font-semibold">Mandatory</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Adopts IFRS S2 requirements for disclosing climate-related capital allocation.</div></td>
+                            </tr>
+                            <tr>
+                                <td class="pillar-name">
+                                    Scope 1 & 2 GHG
+                                    <div class="maturity-bar" title="System Maturity: 3/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-4" aria-label="SECR Scope 1 & 2: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Required for quoted companies, large unquoted companies, and LLPs (UK operations only).</div></td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Scope 1 & 2: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommends disclosure of Scope 1 and 2 emissions on a global basis.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-4" aria-label="IFRS S2 Scope 1 & 2: Mandatory."><span class="font-semibold">Mandatory</span><div class="tooltip">Requires disclosure of absolute gross Scope 1 & 2 emissions on a global basis.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-4" aria-label="UK SRS Scope 1 & 2: Mandatory."><span class="font-semibold">Mandatory</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Adopts IFRS S2 requirements for global Scope 1 & 2 emissions.</div></td>
                             </tr>
                              <tr>
-                                <td class="pillar-name">Scope 3 GHG</td>
-                                <td class="matrix-cell status-minimal">Minimal<div class="tooltip">Only required for quoted companies, and only if practical. Often omitted.</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Recommended "if appropriate" and data is available.</div></td>
-                                <td class="matrix-cell status-partial">In Transition<div class="tooltip">Mandatory, subject to materiality, with a one-year transitional relief period.</div></td>
-                                <td class="matrix-cell status-partial">In Transition<div class="tooltip">Mandatory, subject to materiality, with a one-year transitional relief period.</div></td>
+                                <td class="pillar-name">
+                                    Scope 3 GHG
+                                    <div class="maturity-bar" title="System Maturity: 4/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-1" aria-label="SECR Scope 3: Minimal."><span class="font-semibold">Minimal</span><div class="tooltip">Only required for quoted companies, and only if practical. Often omitted.</div></td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Scope 3: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Recommended "if appropriate" and data is available.</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-2 transitional-relief" aria-label="IFRS S2 Scope 3: In Transition."><span class="font-semibold">In Transition</span><div class="tooltip">Mandatory, subject to materiality, with a one-year transitional relief period.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-2 transitional-relief" aria-label="UK SRS Scope 3: In Transition."><span class="font-semibold">In Transition</span><div class="timing-icon">🔔 FY 2027 (Limited)</div><div class="tooltip">Mandatory, subject to materiality, with a one-year transitional relief period.</div></td>
                             </tr>
                             <tr>
-                                <td class="pillar-name">Industry Metrics</td>
-                                <td class="matrix-cell status-na">N/A<div class="tooltip">No requirement for industry-specific metrics.</div></td>
-                                <td class="matrix-cell status-recommended">Recommended<div class="tooltip">Encouraged via supplemental guidance (e.g., SASB).</div></td>
-                                <td class="matrix-cell status-partial">In Transition<div class="tooltip">Mandatory. Reporters "shall consider" SASB standards to identify topics.</div></td>
-                                <td class="matrix-cell status-partial">In Transition<div class="tooltip">Mandatory. Reporters "may consider" SASB standards, making it optional but encouraged.</div></td>
+                                <td class="pillar-name">
+                                    Industry Metrics
+                                    <div class="maturity-bar" title="System Maturity: 3/4"><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block filled"></div><div class="maturity-block"></div></div>
+                                </td>
+                                <td data-col="1" tabindex="0" class="matrix-cell status-level-0" aria-label="SECR Industry Metrics: Not Applicable.">N/A</td>
+                                <td data-col="2" tabindex="0" class="matrix-cell status-level-3" aria-label="TCFD Industry Metrics: Recommended."><span class="font-semibold">Recommended</span><div class="tooltip">Encouraged via supplemental guidance (e.g., SASB).</div></td>
+                                <td data-col="3" tabindex="0" class="matrix-cell status-level-2 transitional-relief" aria-label="IFRS S2 Industry Metrics: In Transition."><span class="font-semibold">In Transition</span><div class="tooltip">Mandatory. Reporters "shall refer to and consider" SASB Standards to identify topics and metrics.</div></td>
+                                <td data-col="4" tabindex="0" class="matrix-cell status-level-1 transitional-relief" aria-label="UK SRS Industry Metrics: Optional."><span class="font-semibold">Optional</span><div class="timing-icon">🔔 FY 2026 (Limited)</div><div class="tooltip">Mandatory, but the wording is softened so reporters "may refer to and consider" SASB Standards.</div></td>
                             </tr>
                         </tbody>
                     </table>
                  </div>
                  <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm">
-                    <div class="flex items-center"><div class="w-4 h-4 rounded-full mr-2 status-mandatory"></div>Mandatory</div>
-                    <div class="flex items-center"><div class="w-4 h-4 rounded-full mr-2 status-recommended"></div>Recommended</div>
-                    <div class="flex items-center"><div class="w-4 h-4 rounded-full mr-2 status-partial"></div>In Transition</div>
-                    <div class="flex items-center"><div class="w-4 h-4 rounded-full mr-2 status-minimal border"></div>Minimal</div>
+                    <div class="flex items-center"><div class="w-4 h-4 rounded-sm mr-2 status-level-4"></div>Mandatory</div>
+                    <div class="flex items-center"><div class="w-4 h-4 rounded-sm mr-2 status-level-3"></div>Recommended</div>
+                    <div class="flex items-center"><div class="w-4 h-4 rounded-sm mr-2 status-level-2"></div>Implied / In Transition</div>
+                    <div class="flex items-center"><div class="w-4 h-4 rounded-sm mr-2 status-level-1"></div>Minimal / Optional</div>
+                    <div class="flex items-center"><div class="w-4 h-4 rounded-sm mr-2 border"></div>N/A</div>
+                 </div>
+
+                 <div class="mt-12 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold mb-3">Key UK-Specific Amendments</h3>
+                    <p class="text-gray-600 text-sm">While UK SRS adopts the global baseline, the UK has made key pragmatic changes to ease the transition:</p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-sm text-gray-700">
+                        <li><strong>Two-Year "Climate-First" Relief:</strong> Provides a phased start, with climate-only reporting for two years before full sustainability disclosures are required.</li>
+                        <li><strong>Optional SASB Use:</strong> Softens the requirement from "shall consider" to "may consider" SASB standards for industry-specific metrics, providing greater flexibility.</li>
+                        <li><strong>Simultaneous Publication:</strong> Unlike the IFRS baseline, sustainability reports must be published at the same time as the annual financial report from day one.</li>
+                    </ul>
                  </div>
             </section>
 
@@ -629,8 +656,7 @@
 
         async function callGemini(prompt) {
             openModal();
-            // IMPORTANT: Replace this with your actual Netlify site URL
-            const siteUrl = 'https://vpwhite-uksrs.netlify.app'; // Example URL
+            const siteUrl = 'https://vpwhite-uksrs.netlify.app';
             const apiUrl = `${siteUrl}/.netlify/functions/call-gemini`; 
 
             try {
@@ -717,7 +743,51 @@
             callGemini(prompt);
         });
 
+        // Matrix Interactivity
+        const filters = document.getElementById('matrix-filters');
+        const matrix = document.getElementById('comparison-matrix');
+
+        filters.addEventListener('change', () => {
+            const checked = Array.from(filters.querySelectorAll('input:checked')).map(el => el.value);
+            
+            matrix.querySelectorAll('th, td').forEach(cell => {
+                const col = cell.getAttribute('data-col');
+                if (col && !checked.includes(col)) {
+                    cell.classList.add('hidden');
+                } else {
+                    cell.classList.remove('hidden');
+                }
+            });
+        });
+
+        document.getElementById('download-csv-btn').addEventListener('click', () => {
+            let csv = [];
+            matrix.querySelectorAll('tr').forEach(row => {
+                let rowData = [];
+                // Only include visible cells in the CSV
+                row.querySelectorAll('th, td').forEach(cell => {
+                    if (!cell.classList.contains('hidden')) {
+                        // Clean up text for CSV: remove tooltip, extra spaces, and quote if necessary
+                        let text = cell.cloneNode(true);
+                        text.querySelectorAll('.tooltip, .maturity-bar, .timing-icon').forEach(el => el.remove());
+                        let cleanText = `"${text.textContent.trim().replace(/"/g, '""')}"`;
+                        rowData.push(cleanText);
+                    }
+                });
+                csv.push(rowData.join(','));
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8," + csv.join('\n');
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "UK-SRS-Comparison-Matrix.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
     </script>
 
 </body>
-</ht
+</html>
